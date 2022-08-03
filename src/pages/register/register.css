@@ -1,0 +1,41 @@
+.registerScreen{
+    width:100vw;
+    height:100vh;
+    justify-content: center;
+    align-items: center;
+    display:flex;
+}
+.brand{
+    margin:0;
+}
+.signupBox{
+    padding:20px;
+    box-shadow: 0px 0px 20px 2px rgb(200,200,200);
+    width:20%;
+    min-width: 400px;
+    border-radius: 10px;
+}
+.socialTextBox{
+    margin-right:100px;
+}
+input{
+    width:100%;
+    display:block;
+    margin:20px 0;
+    padding:15px 10px;
+    border-radius: 5px;
+    outline: none;
+    /* border-color: white; */
+    border: 1px solid rgb(200,200,200);
+}
+.brand{
+    color:#166fe5;
+    font-size:50px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.brand + p {
+    color:black;
+    font-size:25px;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
