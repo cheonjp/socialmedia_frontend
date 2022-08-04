@@ -6,6 +6,11 @@ function App() {
   return (
     <div className="App">
       <Register />
+      {/* test */}
+      {/* test */}
+      {/* test */}
+      {/* test */}
+      {/* test */}
     </div>
   );
 }
