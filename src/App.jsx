@@ -9,8 +9,13 @@ function App() {
     {/* main branch */}
     {/* main branch */}
       {/* test branch */}
+<<<<<<< HEAD
       {/* test branch2 */}
       {/* this is main branch */}
+=======
+      {/* test branch */}
+      {/* this is test branch */}
+>>>>>>> test
     </div>
   );
 }
