@@ -42,9 +42,15 @@ input{
     
    /* test branch */
 <<<<<<< HEAD
+<<<<<<< HEAD
    /* this is main branch! */
 =======
    /* test branch */
    /* this is test branch! */
 >>>>>>> test
+=======
+   /* test branch2 */
+   /* test2 branch2 */
+   /* this is test2 */
+>>>>>>> test2
 }
