@@ -7,7 +7,9 @@ function App() {
     <div className="App">
       <Register />
     {/* main branch */}
+    {/* main branch */}
       {/* test branch */}
+      {/* test branch2 */}
     </div>
   );
 }
