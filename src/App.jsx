@@ -8,6 +8,8 @@ function App() {
       <Register />
     {/* main branch */}
       {/* test branch */}
+      {/* test2 branch */}
+      {/* this is test2 */}
     </div>
   );
 }
