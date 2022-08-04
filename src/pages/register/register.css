@@ -39,9 +39,14 @@ input{
     font-family: Arial, Helvetica, sans-serif;
    /* testBranch test */
     /* testBranch test */
+<<<<<<< HEAD
     /* main test */
     /* main test */
     /* testBranch test2 */
     /* testBranch test2 */
+=======
+   /* main test */
+    /* main test */
+>>>>>>> 4929e764d84858059e090a059c36584933a9da13
     
 }
