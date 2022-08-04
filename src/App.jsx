@@ -7,6 +7,7 @@ function App() {
     <div className="App">
       <Register />
       {/* main test */}
+      {/* main test */}
     </div>
   );
 }
