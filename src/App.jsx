@@ -8,6 +8,9 @@ function App() {
       <Register />
       {/* test */}
       {/* test */}
+      {/* test */}
+      {/* test */}
+      {/* test */}
     </div>
   );
 }
