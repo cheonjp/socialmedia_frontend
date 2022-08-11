@@ -1,0 +1,29 @@
+@import "../../common.css";
+.loginScreen{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:100vw;
+    height:100vh;
+}
+.loginBox{
+    padding:20px;
+    box-shadow: 0px 0px 20px 2px var(--lightGray);
+    width:20%;
+    min-width: 400px;
+    border-radius: 10px;
+}
+#signInBtn + a {
+    text-decoration: none;
+    margin: 10px 0 15px 0;
+    display:block;
+    color:var(--prColor1);
+    text-align: center;
+    font-size:14px;
+}
+#signInBtn ~ hr {
+    height:1px;
+    border-top:none;
+    color:var(--lightGray);
+    margin-bottom:15px;
+}

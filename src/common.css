@@ -1,0 +1,9 @@
+:root{
+    --prColor1:#166fe5;
+    --subColor1:#0cb420;
+
+    --lightGray:rgb(200,200,200);
+}
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}

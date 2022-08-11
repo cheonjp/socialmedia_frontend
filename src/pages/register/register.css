@@ -1,3 +1,5 @@
+@import "../../common.css";
+
 .registerScreen{
     width:100vw;
     height:100vh;
@@ -29,7 +31,7 @@ input{
     border: 1px solid rgb(200,200,200);
 }
 .brand{
-    color:#166fe5;
+    color:var(--prColor1);
     font-size:50px;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -37,11 +39,28 @@ input{
     color:black;
     font-size:25px;
     font-family: Arial, Helvetica, sans-serif;
-   /* main branch */
-   /* main branch */
-    
-   /* test branch */
-   /* this is main branch! */
-   /* test branch */
-   /* this is test branch! */
+}
+#signUpBtn{
+    width:100%;
+    padding:10px;
+    border:none;
+    background:var(--subColor1);
+    cursor:pointer;
+    color:white;
+    border-radius: 5px;
+    font-size: 16px;
+}
+#signInBtn{
+    width:100%;
+    font-size: 16px;
+    padding:10px;
+    border:none;
+    background:var(--prColor1);
+    color:white;
+    border-radius: 5px;
+    margin-top:10px;
+    cursor:pointer;
+}
+body{
+    background: var(--test2);
 }
