@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react'
 import axios from 'axios'
 import "./register.css"
 import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 
 export default function Register() {
 
@@ -12,16 +13,31 @@ export default function Register() {
     const confirmPassword = useRef()
     const navigate = useNavigate()
 
+    const [validationText, setValidationText] = useState(false)
+
+    const removeInvalid = () =>{
+        if(username.current.parentElement.className === "inputWrapper invalidName"){
+            username.current.parentElement.className ="inputWrapper"
+        }
+        if(email.current.parentElement.className === "inputWrapper invalidMail"){
+            email.current.parentElement.className ="inputWrapper"
+        }
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault()
+
+        const user = {
+            username: username.current.value,
+            email: email.current.value,
+            password: password.current.value,
+        }
+        if(!user.username && !user.email && !user.password){
+            alert("Please fill the form out")
+        }
         if (confirmPassword.current.value !== password.current.value) {
             confirmPassword.current.setCustomValidity('Password is not matched')
         } else {
-            const user = {
-                username: username.current.value,
-                email: email.current.value,
-                password: password.current.value,
-            }
             try {
                 await axios.post("/auth/register", user)
                 navigate("/login")
@@ -41,6 +57,16 @@ export default function Register() {
                 // return response.json(user)
             } catch (error) {
                 console.log(error.response.data)
+                if (error.response.data.includes("user")) {
+                    setValidationText(true)
+                    username.current.parentElement.classList.add("invalidName")
+                } else if (error.response.data.includes("mail")) {
+                    setValidationText(true)
+                    // email.current.parentElement.className = "invalidMail"
+                    email.current.parentElement.classList.add("invalidMail")
+
+                }
+
             }
         }
     }
@@ -54,12 +80,17 @@ export default function Register() {
                 </div>
                 <div className="signupBox">
                     <form onSubmit={handleSubmit}>
-                        <input ref={username} placeholder='User Name' type="text" id="email" />
-                        <input ref={email} placeholder='Email' type="text" id="email" />
+                        <div className="inputWrapper">
+                            <input onFocus={removeInvalid} ref={username} placeholder='User Name' type="text" id="username" />
+                        </div>
+                        <div className="inputWrapper">
+                            <input onFocus={removeInvalid} ref={email} placeholder='Email' type="email" id="email" />
+                        </div>
                         <input ref={password} placeholder='Password' type="password" id="password" />
                         <input ref={confirmPassword} placeholder='Password confirm' type="password" id="passwordConfirm" />
                         <button type="submit" id="signUpBtn">Sign Up</button>
-                        <button id="signInBtn">Sign In</button>
+                        <Link to="/login"><button id="signInBtn">Sign In</button></Link>
+                        {/* <button id="signInBtn">Sign In</button> */}
                     </form>
                 </div>
             </div>
