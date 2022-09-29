@@ -2,18 +2,19 @@
     --prColor1:#166fe5;
     --subColor1:#0cb420;
 
-    --lightGray:rgb(200,200,200);
+    --lightGray:rgb(240,240,240);
+    --darkGray:rgb(110,110,110);
 }
 *{
     font-family: Arial, Helvetica, sans-serif;
 }
-.invalidMail,.invalidName{
+.invalidMail,.invalidName,.wrongMail,.wrongPassword{
     /* border:1px solid red !important; */
     border-color:red !important;
     position:relative;
     padding:0;
 }
-.invalidMail > input, .invalidName > input{
+.invalidMail > input, .invalidName > input, .wrongMail > input, .wrongPassword > input{
     border-color:red !important;
 }
 .invalidMail:before{
@@ -46,3 +47,72 @@
     border-radius: 5px;
     pointer-events: none;
 }
+.wrongMail:before{
+    position:absolute;
+    align-items: center;
+    top:50%;
+    transform: translateY(-50%);
+    right:10px;
+    content:'Wrong email.';
+    background-color:#db7d7d;
+    display:inline-block;
+    color:white;
+    z-index:1;
+    padding:5px;
+    border-radius: 5px;
+    pointer-events: none;
+}
+.wrongPassword:before{
+    position:absolute;
+    align-items: center;
+    top:50%;
+    transform: translateY(-50%);
+    right:10px;
+    content:'Wrong password.';
+    background-color:#db7d7d;
+    display:inline-block;
+    color:white;
+    z-index:1;
+    padding:5px;
+    border-radius: 5px;
+    pointer-events: none;
+}
+.loading{
+    animation: loader 1s linear infinite;
+    margin:0;
+}
+@keyframes loader {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+.iconButton{
+    padding:10px !important;
+    background-color: var(--lightGray) !important;
+    color:black !important;
+    margin-right:10px !important;
+    position:relative;
+    cursor:pointer;
+}
+.iconButton:hover{
+    background-color: rgb(220,220,220) !important;
+}
+.iconButton > .child {
+    position:absolute;
+    width:20px;
+    height:20px;
+    font-size:12px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    background:red;
+    border-radius: 50px;
+    top:-3px;
+    right:-3px;
+    color:white;
+}
+.hide{
+    display:none;
+}
+
+

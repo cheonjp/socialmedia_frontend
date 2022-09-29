@@ -1,0 +1,85 @@
+@import "../../common.css";
+header{
+    height:60px;
+    box-shadow: 0 1px 10px 1px var(--lightGray);
+    display:flex;
+    position:relative;
+}
+.headerContent{
+    display:flex;
+    width:100%;
+    max-width:1300px;
+    margin:auto;
+    padding-left:30px;
+    padding-right:30px;
+    position: relative;
+
+}
+.headerIconBox > img {
+    width:44px;
+    height:44px;
+    border-radius: 50px;
+    object-fit: cover;
+}
+.headerLogoBox{
+    flex:2;
+}
+.headerIconBox{
+    flex:1;
+    display:flex;
+    justify-content: end;
+    align-items: center;
+}
+.headerLogoBox{
+    display:flex;
+    align-items: center;
+}
+.headerContent input{
+    border:none;
+    background-color: rgb(230,230,230);
+    padding:10px 15px;
+    border-radius: 50px;
+    outline:none;
+    width:100%;
+    margin-left:20px;
+}
+.headerContent .inputWrapper {
+    /* width:100%; */
+}
+.profileBtn{
+    cursor:pointer;
+}
+.modal{
+   
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 1px 10px 1px var(--lightGray);
+}
+.profileModal{
+    padding:10px;
+    position:absolute;
+    right:0;
+    top:calc(100% + 10px);
+    width:300px;
+}
+hr{
+    border-width: 1px 0 0 0;
+    border-color:var(--lightGray);
+}
+header .profileBar{
+    border-radius:10px !important;
+}
+.editProfile{
+    color:var(--prColor1);
+    font-size: 14px;
+    padding:5px;
+    cursor: pointer;
+}
+.editProfile:hover{
+    background-color:var(--lightGray);
+    border-radius: 5px;
+}
+
+
+
+

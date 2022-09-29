@@ -1,0 +1,74 @@
+.mainDisplay{
+    flex:6;
+    padding:20px;
+}
+.myOpinion > img {
+    width:45px;
+    height:45px;
+    border-radius: 50px;
+}
+.opinionContainer{
+    box-shadow: 0 0 5px 5px var(--lightGray);
+    padding:20px;
+    border-radius: 10px;
+}
+.myOpinion{
+    display:flex;
+    width:100%;
+}
+.opinionBox {
+    padding: 10px 15px;
+    width:100%;
+    margin-left:15px;
+    border:none;
+    background-color: var(--lightGray);
+    outline:none;
+    border-radius: 50px;
+
+}
+.opinionBox:hover{
+    background-color: rgb(220,220,220);
+}
+.uploadFileBox{
+    border-top:1px solid var(--lightGray);
+    padding-top:10px;
+    margin-top:15px;
+    display:flex;
+    align-items: center;
+}
+
+.uploadImgIcon{
+    color:green;
+    cursor:pointer;
+}
+.uploadLiveIcon{
+    color:rgb(227, 96, 96);
+}
+.uploadFeelingIcon{
+    color:rgb(237, 211, 45);
+}
+.uploadLabel > input{
+    display:none;
+}
+.uploadLabel{
+    display:flex;
+    align-items: center;
+    cursor:pointer;
+    padding:7px;
+    border-radius: 10px;
+    flex:1;
+    display:flex;
+    justify-content: center;
+}
+.uploadLabel:hover{
+    background-color: var(--lightGray);
+}
+.uploadIcon{
+    margin-right:10px;
+    font-size:30px;
+
+}
+.uploadLabel > span{
+    color:var(--darkGray);
+    letter-spacing:2px;
+}

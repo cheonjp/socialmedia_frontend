@@ -1,0 +1,19 @@
+.iconBox{
+    padding:10px;
+    display:flex;
+    align-items: center;
+    padding:10px;
+    border-radius: 10px 0 0 10px;
+    cursor: pointer;
+}
+.iconBox:hover{
+    background-color:rgb(240,240,240);
+}
+.iconBox > img {
+    margin-right:10px;
+    width:36px;
+    height:36px;
+}
+.hide{
+    display:none;
+}

@@ -1,0 +1,20 @@
+@import "../../common.css";
+
+.profileBarImg{
+    width:45px;
+    height:45px;
+    border-radius: 50px;
+    margin-right:15px;
+    object-fit: cover;
+}
+.profileBar{
+    padding: 10px;
+    display:flex;
+    align-items:center ;
+    cursor: pointer;
+}
+.profileBar:hover{
+    padding: 10px;
+    background-color:var(--lightGray);
+    border-radius: 10px 0 0 10px;
+}

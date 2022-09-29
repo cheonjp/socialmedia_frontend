@@ -1,0 +1,47 @@
+.leftBar{
+    flex:2;
+    height:calc(100vh - 60px);
+    overflow-y: hidden;
+    padding:20px 0;
+    scrollbar-width: thin;
+    scrollbar-color: darkgrey rgba(0,0,0,0);
+    
+}
+.leftBar::-webkit-scrollbar{
+    width:5px;
+}
+.leftBar::-webkit-scrollbar-track{
+    background-color: none;
+}
+.leftBar::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+}
+.leftBar:hover{
+    overflow-y: scroll;
+
+
+}
+.leftBar .i-seeMore{
+    background-color:rgb(240,240,240);
+    width:35px;
+    height:35px;
+    border-radius: 50px;
+    margin-right: 10px;
+    
+}
+.leftBar > .seeMoreBtn{
+    padding:10px;
+    border-radius: 10px 0 0 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.seeMoreBtn:hover{
+    background-color: rgb(240,240,240);
+}
+.seeMoreBtn:hover > .i-seeMore{
+    background-color: lightgray;
+}
+.hide{
+    display:none;
+}
