@@ -1,6 +1,8 @@
 .mainDisplay{
     flex:6;
     padding:20px;
+    height:calc(100vh - 60px);
+    overflow-y: auto;
 }
 .myOpinion > img {
     width:45px;
@@ -70,5 +72,6 @@
 }
 .uploadLabel > span{
     color:var(--darkGray);
-    letter-spacing:2px;
+    letter-spacing:1px;
+    font-size: 14px;
 }

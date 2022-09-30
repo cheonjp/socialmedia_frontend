@@ -5,6 +5,7 @@ import "./maindisplay.css"
 import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined';
 import LiveTvIcon from '@mui/icons-material/LiveTv';
 import EmojiEmotionsOutlinedIcon from '@mui/icons-material/EmojiEmotionsOutlined';
+import Blog from '../blog/Blog';
 
 export default function MainDisplay({savedUser}) {
   const [profilePicture,setProfilePicture] = useState("")
@@ -26,22 +27,24 @@ export default function MainDisplay({savedUser}) {
           </div>
           <div className="uploadFileBox">
             <label className='uploadLabel'>
-              <input type="file"/>
+              <input type="file" multiple/>
               <LiveTvIcon className='uploadIcon uploadLiveIcon'/>
               <span>Live video</span>
             </label>
             <label className='uploadLabel'>
-              <input type="file"/>
+              <input type="file" multiple/>
               <AddPhotoAlternateOutlinedIcon className='uploadIcon uploadImgIcon'/>
               <span>Photo</span>
             </label>
             <label className='uploadLabel'>
-              <input type="file"/>
+              <input type="file" multiple/>
               <EmojiEmotionsOutlinedIcon className='uploadIcon uploadFeelingIcon'/>
               <span>Feeling/activity</span>
             </label>
           </div>
         </div>
+        <Blog/>
+        <Blog/>
       </div>
     </div>
   )
