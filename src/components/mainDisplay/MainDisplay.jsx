@@ -6,10 +6,12 @@ import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternate
 import LiveTvIcon from '@mui/icons-material/LiveTv';
 import EmojiEmotionsOutlinedIcon from '@mui/icons-material/EmojiEmotionsOutlined';
 import Blog from '../blog/Blog';
+import { userData } from '../../context/data'; 
 
 export default function MainDisplay({savedUser}) {
   const [profilePicture,setProfilePicture] = useState("")
   const [userName, setUserName] = useState("")
+
 
   useEffect(()=>{
     if(savedUser !==null){
@@ -43,8 +45,11 @@ export default function MainDisplay({savedUser}) {
             </label>
           </div>
         </div>
-        <Blog/>
-        <Blog/>
+        {userData.map((user)=>{
+          return(
+            <Blog profileImg={user.profilePicture} username={user.username} postText={user.postText}/>
+          )
+        })}
       </div>
     </div>
   )

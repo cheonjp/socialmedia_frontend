@@ -1,15 +1,28 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import "./blog.css"
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
-export default function Blog() {
+export default function Blog({profileImg,username,postText}) {
+    const blogText = useRef()
+    const [word,setWord]=useState("")
+
+    const showAllText = (e)=>{
+        // e.target.classList.add("hide")
+        e.target.parentElement.classList.add("hide")
+        e.target.parentElement.parentElement.textContent = postText
+        
+
+    }
+
     return (
         <div className='blogContainer'>
             <div className="blogProfileContainer">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8ZmFjZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60" className='profileImg' alt="" />
+                <img src={profileImg} className='profileImg' alt="" />
                 <div className="nameAndTime">
                     <div className="profileName">
-                        Josh Kim
+                        {username}
                     </div>
                     <div className="uploadDate">
                         7h
@@ -19,11 +32,10 @@ export default function Blog() {
                     <MoreHorizIcon className="uploadMenu" />
                 </div>
             </div>
-                <div className="blogContent">
-                    Hello this is the test for anything<br/>
-                    Hello this is the test for anything<br/>
-                    Hello this is the test for anything<br/>
-                    Hello this is the test for anything ...<span className='seeMore'>See more</span>
+                <div className="blogContent" ref={blogText} onLoad={()=>blogText.current.textContent.subString(5)}>
+                    <div className="blogText">
+                    {postText.length < 150 ? postText : postText.substring(0,150)} {postText.length > 150 && <span > ...<span onClick={(event)=> showAllText(event)} className='seeMore'>See more</span></span>}
+                    </div>
                     <div className="blogImg">
                         <img src="https://images.unsplash.com/photo-1520175480921-4edfa2983e0f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8aXRhbHl8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60" alt="" />
                         <img src="https://images.unsplash.com/photo-1516108317508-6788f6a160e4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aXRhbHl8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60" alt="" />

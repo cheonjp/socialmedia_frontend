@@ -61,6 +61,7 @@ header{
     right:0;
     top:calc(100% + 10px);
     width:300px;
+    z-index:100;
 }
 hr{
     border-width: 1px 0 0 0;

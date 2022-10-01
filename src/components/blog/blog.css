@@ -66,6 +66,7 @@
 .blogImg .extraBlogImgContainer{
     max-width:50%;
     position:relative;
+    margin:2px;
 }
 .blogImg img:last-child{
     max-width:100% !important;
@@ -81,6 +82,8 @@
     height: 100%;
     background-color: rgba(0,0,0,0.6);
     display:flex;
+    border:none;
+    outline:none;
     justify-content: center;
     align-items: center;
     font-size: 30px;
