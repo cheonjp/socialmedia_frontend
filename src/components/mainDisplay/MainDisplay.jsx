@@ -7,10 +7,13 @@ import LiveTvIcon from '@mui/icons-material/LiveTv';
 import EmojiEmotionsOutlinedIcon from '@mui/icons-material/EmojiEmotionsOutlined';
 import Blog from '../blog/Blog';
 import { userData } from '../../context/data'; 
+import { useRef } from 'react';
+import axios from "axios"
 
 export default function MainDisplay({savedUser}) {
   const [profilePicture,setProfilePicture] = useState("")
   const [userName, setUserName] = useState("")
+  const postText = useRef()
 
 
   useEffect(()=>{
@@ -18,14 +21,22 @@ export default function MainDisplay({savedUser}) {
       setProfilePicture(savedUser.profilePicture)
       setUserName(savedUser.username)
     }
+
   },[savedUser])
+
+  const creatingPost = async()=>{
+    const newPost = await axios.post("/posts",{
+      userId:savedUser._id,
+      postText:postText.current.value
+    })
+  }
   return (
     <div className='mainDisplay'>
       <div className="postBox">
         <div className="opinionContainer">
           <div className="myOpinion">
           <img src={profilePicture} alt="" />
-          <input type="text" className="opinionBox" placeholder={`What's on your mind, ${userName}`} />
+          <input type="text" className="opinionBox" ref={postText} placeholder={`What's on your mind, ${userName}`} />
           </div>
           <div className="uploadFileBox">
             <label className='uploadLabel'>
@@ -44,6 +55,7 @@ export default function MainDisplay({savedUser}) {
               <span>Feeling/activity</span>
             </label>
           </div>
+          <button onClick={creatingPost}>Post</button>
         </div>
         {userData.map((user)=>{
           return(
