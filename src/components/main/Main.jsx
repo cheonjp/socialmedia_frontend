@@ -9,7 +9,7 @@ export default function Main({savedUser}) {
     <div className='main'>
         <LeftBar savedUser={savedUser}/>
         <MainDisplay savedUser ={savedUser}/>
-        <RightBar/>
+        <RightBar savedUser ={savedUser}/>
     </div>
   )
 }

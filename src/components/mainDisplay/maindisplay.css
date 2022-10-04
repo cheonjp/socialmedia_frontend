@@ -75,3 +75,28 @@
     letter-spacing:1px;
     font-size: 14px;
 }
+
+.mainDisplay{
+    scrollbar-width: thin;
+    scrollbar-color: darkgrey rgba(0,0,0,0);
+    
+}
+
+
+.mainDisplay::-webkit-scrollbar{
+    width:5px;
+}
+.mainDisplay::-webkit-scrollbar-track{
+    background-color: none;
+}
+.mainDisplay::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0);
+}
+.mainDisplay:hover::-webkit-scrollbar-thumb {
+    background-color: darkgray;
+}
+.mainDisplay:hover{
+    overflow-y: scroll;
+
+
+}

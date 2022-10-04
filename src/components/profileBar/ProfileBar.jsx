@@ -1,6 +1,6 @@
 import React from 'react'
 import "./profileBar.css"
-import { userData } from '../../context/data'
+// import { userData } from '../../context/data'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import noprofileImg from "../../images/noprofile.jpg"

@@ -3,12 +3,13 @@ import { useReducer } from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { useContext } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate,BrowserRouter,Routes,Route } from 'react-router-dom'
 import Header from '../../components/header/Header'
 import LeftBar from '../../components/leftbar/LeftBar'
 import Main from '../../components/main/Main'
 import { AuthContext } from '../../context/AuthContext'
 import axios from "axios"
+import Account from '../account/Account'
 
 export default function Home() {
   const { user, isFetching, error, dispatch } = useContext(AuthContext)
