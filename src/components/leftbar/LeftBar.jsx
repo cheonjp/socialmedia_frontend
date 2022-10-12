@@ -13,6 +13,7 @@ export default function LeftBar({savedUser}) {
     console.log(hideBtn)
     hideBtn ? setHide('hide') : setHide('')
   }
+
   return (
     <div className='leftBar'>
         <ProfileBar savedUser={savedUser}/>

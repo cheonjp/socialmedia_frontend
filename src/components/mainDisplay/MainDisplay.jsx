@@ -17,7 +17,7 @@ export default function MainDisplay({savedUser}) {
 
 
   useEffect(()=>{
-    if(savedUser !==null){
+    if(savedUser !== null){
       setProfilePicture(savedUser.profilePicture)
       setUserName(savedUser.username)
     }
@@ -25,9 +25,10 @@ export default function MainDisplay({savedUser}) {
   },[savedUser])
 
   const creatingPost = async()=>{
-    const newPost = await axios.post("/posts",{
+    const newPost = await axios.post("/posts/post",{
       userId:savedUser._id,
-      postText:postText.current.value
+      postText:postText.current.value,
+      postImg:"http://localhost:1000/public/images/hero_1.jpg"
     })
   }
   return (
