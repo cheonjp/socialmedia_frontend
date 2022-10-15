@@ -11,7 +11,7 @@ export default function ProfileBar({savedUser}) {
   const [user,setUser]=useState({})
   const [userName,setUserName]=useState("")
   const [userImg,setUserImg]=useState("")
-  const [userId,setUserId]=useState("")
+  const [userEmail,setUserEmail]=useState("")
 
   const navigate = useNavigate()
 
@@ -19,12 +19,12 @@ export default function ProfileBar({savedUser}) {
     if(savedUser){
       setUserName(savedUser.username)
       setUserImg(savedUser.profilePicture)
-      setUserId(savedUser._id)
+      setUserEmail(savedUser.email)
     }
   },[savedUser])
 
   const showProfile = ()=>{
-    navigate(`/profile/${userId}`)
+    navigate(`/profile/${userEmail}`)
   }
   
   return (

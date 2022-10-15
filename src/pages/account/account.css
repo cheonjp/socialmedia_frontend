@@ -16,6 +16,8 @@
     padding:20px;
     border-radius: 10px;
     margin-left: 200px;
+    min-width:400px;
+
 }
 .accountProfileDetail{
     width:100%;

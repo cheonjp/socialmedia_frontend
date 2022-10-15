@@ -60,7 +60,7 @@ export default function Header({ savedUser }) {
                     {profilePicture ? <img src={profilePicture} alt="" className="profileBtn" onClick={() => setActiveModal(!activeModal)} /> : <img src={noProfileImg} alt="" className="profileBtn" onClick={() => setActiveModal(!activeModal)} />}
                 </div>
                 <div className={activeModal ? "profileModal modal" : "profileModal modal hide"} ref={profileModal}>
-                    <ProfileBar savedUser={savedUser} />
+                    <ProfileBar savedUser={savedUser}/>
                     <hr />
                     <div className='editProfile' >Edit profiles</div>
                 </div>
