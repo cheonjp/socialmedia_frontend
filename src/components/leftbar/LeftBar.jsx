@@ -10,7 +10,6 @@ export default function LeftBar({savedUser}) {
   const [hideBtn,setHideBtn]= useState(false)
   const showBtn = ()=>{
     setHideBtn(!hideBtn)
-    console.log(hideBtn)
     hideBtn ? setHide('hide') : setHide('')
   }
 

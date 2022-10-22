@@ -56,7 +56,6 @@ export default function Register() {
                 // })
                 // return response.json(user)
             } catch (error) {
-                console.log(error.response.data)
                 if (error.response.data.includes("user")) {
                     setValidationText(true)
                     username.current.parentElement.classList.add("invalidName")

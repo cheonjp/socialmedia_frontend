@@ -18,7 +18,6 @@ export default function Home() {
 
   const navigate = useNavigate()
 
-  console.log(savedUser)
 
   useEffect(()=>{
     const currentUser = sessionStorage.getItem("userInfo")

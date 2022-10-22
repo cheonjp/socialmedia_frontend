@@ -36,7 +36,6 @@ export default function Login() {
       { error.response.status === 400 && password.current.parentElement.classList.add("wrongPassword") }
       { error.response.status === 404 && email.current.parentElement.classList.add("wrongMail") }
       dispatch({ type: "LOGIN_FAILURE" })
-      console.log(error)
     }
   }
   return (
