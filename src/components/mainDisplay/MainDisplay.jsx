@@ -16,6 +16,7 @@ export default function MainDisplay({ savedUser }) {
   const [userName, setUserName] = useState("")
   const [uploadedImages, setUploadedImages] = useState([])
   const [imgArray, setImgArray] = useState([])
+  const [userPost,setUserPost]=useState([])
 
   let imgName = []
   
@@ -67,12 +68,15 @@ export default function MainDisplay({ savedUser }) {
     } catch (error) {
       console.log(error)
     }
-    // const newPost = await axios.post("/posts/post", {
-    //   userId: savedUser._id,
-    //   postText: postText.current.value,
-    //   postImg: "http://localhost:1000/public/images/hero_1.jpg"
-    // })
-    // console.log(newPost)
+
+    try {
+      console.log(savedUser)
+      const res = await axios.get("/posts/"+savedUser._id)
+      setUserPost(res.data)
+    } catch (error) {
+      console.log(error)
+    }
+
     setImgArray([])
     navigate("/")
   }
@@ -107,7 +111,8 @@ export default function MainDisplay({ savedUser }) {
         </form>
         {userData.map((user) => {
           return (
-            <Blog profileImg={user.profilePicture} username={user.username} postText={user.postText} />
+            // <Blog profileImg={user.profilePicture} username={user.username} postText={user.postText} />
+            <Blog userPost={userPost} />
           )
         })}
       </div>

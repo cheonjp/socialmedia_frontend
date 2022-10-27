@@ -33,6 +33,7 @@ export default function Account() {
             if(userId){
                 const res = await axios.get(`/posts/${userId}`)
                 setPosts(res.data.reverse())
+                console.log(posts)
             }
         }
         getUserPosts()
@@ -99,7 +100,7 @@ export default function Account() {
                 </div>
                 {
                     posts.map((post) => {
-                        return <Blog profileImg={profileData.profilePicture ? profileData.profilePicture : "../../images/noprofile.jpg"} username={profileData.username} postText={post.postText} />
+                        return <Blog profileImg={profileData.profilePicture ? profileData.profilePicture : "../../images/noprofile.jpg"} username={profileData.username} post={post} />
                     })
                 }
             </div>

@@ -4,17 +4,28 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-export default function Blog({profileImg,username,postText}) {
+export default function Blog({profileImg,username,post}) {
     const blogText = useRef()
     const [word,setWord]=useState("")
+    const [userPost,setUserPost]=useState(null)
 
-    const showAllText = (e)=>{
-        // e.target.classList.add("hide")
-        e.target.parentElement.classList.add("hide")
-        e.target.parentElement.parentElement.textContent = postText
-        
-
+    const showPostText=()=>{
+        if(userPost.postText.length > 150){
+            return(
+                // `${userPost.postText.substring(0,150)}...`
+                <span>{`${userPost.postText.substring(0,150)}...`} <span className="seeMore" onClick={(e)=>e.target.parentElement.textContent=post.postText}>Read More</span></span>
+                    
+                ) 
+                
+        }else{
+            return userPost.postText
+        }
     }
+
+    useEffect(()=>{
+        setUserPost(post)
+    },[post])
+    const backendPublic =process.env.REACT_APP_PUBLIC_URL
 
     return (
         <div className='blogContainer'>
@@ -32,18 +43,25 @@ export default function Blog({profileImg,username,postText}) {
                     <MoreHorizIcon className="uploadMenu" />
                 </div>
             </div>
-                <div className="blogContent" ref={blogText} onLoad={()=>blogText.current.textContent.substring(5)}>
+                <div className="blogContent" ref={blogText}>
                     <div className="blogText">
-                    {postText.length < 150 ? postText : postText.substring(0,150)} {postText.length > 150 && <span > ...<span onClick={(event)=> showAllText(event)} className='seeMore'>See more</span></span>}
+                        {userPost && showPostText()}
+                        
+
                     </div>
-                    {/* <div className="blogImg">
-                        <img src="https://images.unsplash.com/photo-1520175480921-4edfa2983e0f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8aXRhbHl8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60" alt="" />
-                        <img src="https://images.unsplash.com/photo-1516108317508-6788f6a160e4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aXRhbHl8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60" alt="" />
-                        <img src="https://images.unsplash.com/photo-1556958540-2378bacb6f59?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGl0YWx5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60" alt="" />
-                        <div className="extraBlogImgContainer">
+                    <div className="blogImg">
+                        {/* {post.postImg.map(img=>{
+                            return (
+                                <img src="test" alt="" />
+                            )
+                        })} */}
+                        {userPost && userPost.postImg.map(img => {
+                            return <img src={backendPublic+img} alt=""/>
+                        })}
+                        {/* <div className="extraBlogImgContainer">
                             <img src="https://images.unsplash.com/photo-1520175480921-4edfa2983e0f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8aXRhbHl8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60" alt="" />
-                        </div>
-                    </div> */}
+                        </div> */}
+                    </div>
                 </div>
         </div>
     )
