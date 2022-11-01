@@ -13,26 +13,34 @@ import Account from '../account/Account'
 
 export default function Home() {
   const { user, isFetching, error, dispatch } = useContext(AuthContext)
-  const [savedUser, setSavedUser] = useState([])
+  const [savedUser, setSavedUser] = useState(sessionStorage.getItem("userInfo") ? sessionStorage.getItem("userInfo"): [])
   const [action,setAction] = useState(false)
 
+
   const navigate = useNavigate()
+
+
 
 
   useEffect(()=>{
     const currentUser = sessionStorage.getItem("userInfo")
     setSavedUser(JSON.parse(currentUser))
+    console.log(savedUser)
     
   },[action])
   useEffect(()=>{
     const getUser = async () =>{
-      !user && navigate("/login")
+      console.log(user)
+      // user && navigate("/login")
+      !savedUser && navigate("/login")
       const res = await axios.get("/users/"+user)
-      sessionStorage.setItem("userInfo", JSON.stringify(res.data))
+      savedUser ? sessionStorage.getItem("userInfo") : sessionStorage.setItem("userInfo", JSON.stringify(res.data))
       setAction(true)
+      console.log(savedUser)
+
     }
     getUser()
-  },[])
+  },[savedUser])
   return (
     <>
       <Header savedUser={savedUser}/>

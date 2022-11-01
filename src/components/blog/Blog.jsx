@@ -3,11 +3,43 @@ import "./blog.css"
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import noProfileImg from "../../images/noprofile.jpg"
+import Moment from "react-moment";
 
-export default function Blog({profileImg,username,post}) {
+export default function Blog({from,profilePicture,profileImg,username,post}) {
     const blogText = useRef()
-    const [word,setWord]=useState("")
     const [userPost,setUserPost]=useState(null)
+    const [friendProfile,setFriendProfile]=useState(null)
+    const [pageFrom,setPageFrom]=useState(null)
+    const [postUser,setPostUser]=useState(null)
+    const [postUserProfileImg,setPostUserProfileImg]=useState(null)
+
+    
+    const postProfileImg = ()=>{
+        setPageFrom(from)
+        if(pageFrom){
+
+            profileImg.map((img)=>{
+                if(img._id === post.userId){
+                    // test =img.username
+                    setPostUser(img.username)
+                    setPostUserProfileImg(img.profilePicture)
+                }
+            })
+        }
+    }
+    const renderProfileImg = ()=>{
+        if(postUserProfileImg !==null){
+            return <img src={postUserProfileImg ? postUserProfileImg:noProfileImg} className='profileImg' alt="" />
+        }else if(postUserProfileImg === null){
+            return <img src={profilePicture? profilePicture : noProfileImg} className='profileImg' alt="" />
+        }
+    }
+    
+    useEffect(()=>{
+        postProfileImg()
+        
+    },[profileImg])
 
     const showPostText=()=>{
         if(userPost.postText.length > 150){
@@ -30,13 +62,17 @@ export default function Blog({profileImg,username,post}) {
     return (
         <div className='blogContainer'>
             <div className="blogProfileContainer">
-                <img src={profileImg} className='profileImg' alt="" />
+                {renderProfileImg()}
+                {/* {postUserProfileImg !==null &&  <img src={postUserProfileImg ? postUserProfileImg:noProfileImg} className='profileImg' alt="" />} */}
+                {/* {postUserProfileImg !==null && console.log("not null")} */}
+                {/* {profilePicture && <img src={profilePicture? profilePicture : noProfileImg} className='profileImg' alt="" />} */}
+                {/* <img src={profilePicture} className='profileImg' alt="" /> */}
                 <div className="nameAndTime">
                     <div className="profileName">
-                        {username}
+                        {postUser ? postUser : username}
                     </div>
                     <div className="uploadDate">
-                        7h
+                        {userPost && <Moment fromNow>{userPost.createdAt}</Moment>}
                     </div>
                 </div>
                 <div className="iconWrapper">

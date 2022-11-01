@@ -19,6 +19,12 @@ export default function Login() {
 
   const HandleLogin = async (e) => {
     e.preventDefault()
+    const sessionUser = JSON.parse(sessionStorage.getItem("userInfo"))
+    if(sessionUser){
+      if(email.current.value !== sessionUser.email){
+        sessionStorage.clear()
+      }
+    }
     
     dispatch({ type: "LOGIN_START" })
     

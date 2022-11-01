@@ -6,7 +6,6 @@ import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternate
 import LiveTvIcon from '@mui/icons-material/LiveTv';
 import EmojiEmotionsOutlinedIcon from '@mui/icons-material/EmojiEmotionsOutlined';
 import Blog from '../blog/Blog';
-import { userData } from '../../context/data';
 import { useRef } from 'react';
 import axios from "axios"
 import { useNavigate } from 'react-router-dom';
@@ -14,7 +13,10 @@ import { useNavigate } from 'react-router-dom';
 export default function MainDisplay({ savedUser }) {
   const [profilePicture, setProfilePicture] = useState("")
   const [userName, setUserName] = useState("")
+  const [userId,setUserId]=useState(null)
+  const [timelinePosts,setTimelinePosts]=useState(null)
   const [uploadedImages, setUploadedImages] = useState([])
+  // const [userId,setUserId]=useState("")
   const [imgArray, setImgArray] = useState([])
   const [userPost,setUserPost]=useState([])
 
@@ -26,13 +28,29 @@ export default function MainDisplay({ savedUser }) {
   const formRef = useRef()
 
 
-  useEffect(() => {
+  useEffect( () => {
     if (savedUser !== null) {
       setProfilePicture(savedUser.profilePicture)
       setUserName(savedUser.username)
-    }
+      setUserId(savedUser._id)
 
+    }
   }, [savedUser])
+
+  useEffect(()=>{
+    if(userId){
+      const timelinePosts = async()=>{
+        try {
+          const res = await axios.get(`posts/timeline/${userId}`)
+          setTimelinePosts(res.data)
+          
+        } catch (error) {
+          console.log(error)
+        }
+      }
+      timelinePosts()
+    }
+  },[userId])
 
   const creatingPost = async (e) => {
     e.preventDefault()
@@ -48,7 +66,6 @@ export default function MainDisplay({ savedUser }) {
       }
       
       try {
-        console.log([...formData])
         const res = await axios.post("/upload",formData)
         imgArray.forEach((each)=>{
           each =res.data+"_"+each
@@ -63,14 +80,15 @@ export default function MainDisplay({ savedUser }) {
       const res = await axios.post("/posts/post",{
         userId:savedUser._id,
         postText:postText.current.value,
-        postImg:imgName
+        postImg:imgName,
       })
+      window.location.reload()
+      navigate("/")
     } catch (error) {
       console.log(error)
     }
 
     try {
-      console.log(savedUser)
       const res = await axios.get("/posts/"+savedUser._id)
       setUserPost(res.data)
     } catch (error) {
@@ -109,12 +127,12 @@ export default function MainDisplay({ savedUser }) {
             <button type="submit">Post</button>
           </div>
         </form>
-        {userData.map((user) => {
-          return (
-            // <Blog profileImg={user.profilePicture} username={user.username} postText={user.postText} />
-            <Blog userPost={userPost} />
-          )
+        {timelinePosts && timelinePosts.posts.map(post => {
+          return <Blog from={"main"} profilePicture={profilePicture} username={userName} post={post} profileImg={timelinePosts.friends}/>
         })}
+        {/* {timelinePosts && timelinePosts.map((post) => {
+          return <Blog post={post}/>
+        })} */}
       </div>
     </div>
   )
