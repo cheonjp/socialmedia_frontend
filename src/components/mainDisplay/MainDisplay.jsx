@@ -19,6 +19,7 @@ export default function MainDisplay({ savedUser }) {
   // const [userId,setUserId]=useState("")
   const [imgArray, setImgArray] = useState([])
   const [userPost,setUserPost]=useState([])
+  const [activeBtn,setActiveBtn]=useState(false)
 
   let imgName = []
   
@@ -51,6 +52,12 @@ export default function MainDisplay({ savedUser }) {
       timelinePosts()
     }
   },[userId])
+
+  useEffect(()=>{
+    if(uploadedImages.length !==0){
+      setActiveBtn(true)
+    }
+  },[uploadedImages])
 
   const creatingPost = async (e) => {
     e.preventDefault()
@@ -98,6 +105,13 @@ export default function MainDisplay({ savedUser }) {
     setImgArray([])
     navigate("/")
   }
+  const actionBtn =() =>{
+    if(postText.current.value !==""){
+      setActiveBtn(true)
+    }else if(postText.current.value ===""){
+      setActiveBtn(false)
+    }
+  }
   return (
     <div className='mainDisplay'>
       <div className="postBox">
@@ -106,7 +120,7 @@ export default function MainDisplay({ savedUser }) {
             <div className="myOpinion">
               <img src={profilePicture} alt="" />
 
-              <input type="text" className="opinionBox" ref={postText} placeholder={`What's on your mind, ${userName}`} />
+              <input type="text" className="opinionBox" ref={postText} onChange={actionBtn} placeholder={`What's on your mind, ${userName}`} />
             </div>
             <div className="uploadFileBox">
               <label className='uploadLabel'>
@@ -124,7 +138,8 @@ export default function MainDisplay({ savedUser }) {
                 <span>Feeling/activity</span>
               </label>
             </div>
-            <button type="submit">Post</button>
+            {/* <button type="submit" className='postBtn disabledBtn' disabled>Post</button> */}
+            <button type="submit" className={activeBtn ? "postBtn" :"postBtn disabledBtn" } disabled={activeBtn ? false : true}>Post</button>
           </div>
         </form>
         {timelinePosts && timelinePosts.posts.map(post => {

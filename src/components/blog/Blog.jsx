@@ -14,11 +14,9 @@ export default function Blog({from,profilePicture,profileImg,username,post}) {
     const [postUser,setPostUser]=useState(null)
     const [postUserProfileImg,setPostUserProfileImg]=useState(null)
 
-    
-    const postProfileImg = ()=>{
-        setPageFrom(from)
-        if(pageFrom){
 
+    const postProfileImg = ()=>{
+        if(typeof profileImg === "object"){
             profileImg.map((img)=>{
                 if(img._id === post.userId){
                     // test =img.username
@@ -30,16 +28,18 @@ export default function Blog({from,profilePicture,profileImg,username,post}) {
     }
     const renderProfileImg = ()=>{
         if(postUserProfileImg !==null){
-            return <img src={postUserProfileImg ? postUserProfileImg:noProfileImg} className='profileImg' alt="" />
+            return <img onClick={()=>{console.log(post)}} src={postUserProfileImg ? postUserProfileImg:noProfileImg} className='profileImg' alt="" />
         }else if(postUserProfileImg === null){
             return <img src={profilePicture? profilePicture : noProfileImg} className='profileImg' alt="" />
         }
     }
     
     useEffect(()=>{
+        setPageFrom(from)
         postProfileImg()
+        renderProfileImg()
         
-    },[profileImg])
+    },[profileImg,from])
 
     const showPostText=()=>{
         if(userPost.postText.length > 150){
@@ -63,10 +63,6 @@ export default function Blog({from,profilePicture,profileImg,username,post}) {
         <div className='blogContainer'>
             <div className="blogProfileContainer">
                 {renderProfileImg()}
-                {/* {postUserProfileImg !==null &&  <img src={postUserProfileImg ? postUserProfileImg:noProfileImg} className='profileImg' alt="" />} */}
-                {/* {postUserProfileImg !==null && console.log("not null")} */}
-                {/* {profilePicture && <img src={profilePicture? profilePicture : noProfileImg} className='profileImg' alt="" />} */}
-                {/* <img src={profilePicture} className='profileImg' alt="" /> */}
                 <div className="nameAndTime">
                     <div className="profileName">
                         {postUser ? postUser : username}
@@ -86,17 +82,9 @@ export default function Blog({from,profilePicture,profileImg,username,post}) {
 
                     </div>
                     <div className="blogImg">
-                        {/* {post.postImg.map(img=>{
-                            return (
-                                <img src="test" alt="" />
-                            )
-                        })} */}
                         {userPost && userPost.postImg.map(img => {
                             return <img src={backendPublic+img} alt=""/>
                         })}
-                        {/* <div className="extraBlogImgContainer">
-                            <img src="https://images.unsplash.com/photo-1520175480921-4edfa2983e0f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8aXRhbHl8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60" alt="" />
-                        </div> */}
                     </div>
                 </div>
         </div>
