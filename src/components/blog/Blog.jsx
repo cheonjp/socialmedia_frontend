@@ -12,6 +12,7 @@ export default function Blog({from,profilePicture,profileImg,username,post}) {
     const [friendProfile,setFriendProfile]=useState(null)
     const [pageFrom,setPageFrom]=useState(null)
     const [postUser,setPostUser]=useState(null)
+    const [postEmail,setEmail]=useState(null)
     const [postUserProfileImg,setPostUserProfileImg]=useState(null)
 
 
@@ -19,9 +20,10 @@ export default function Blog({from,profilePicture,profileImg,username,post}) {
         if(typeof profileImg === "object"){
             profileImg.map((img)=>{
                 if(img._id === post.userId){
-                    // test =img.username
                     setPostUser(img.username)
                     setPostUserProfileImg(img.profilePicture)
+                    // 여기까지 했음
+                    setEmail(img.email)
                 }
             })
         }

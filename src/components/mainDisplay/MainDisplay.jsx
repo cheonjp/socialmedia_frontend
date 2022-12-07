@@ -35,6 +35,12 @@ export default function MainDisplay({ savedUser }) {
       setUserName(savedUser.username)
       setUserId(savedUser._id)
 
+      const getFriends = async () =>{
+        const res = await axios.get("/users/"+"jane@gmail.com")
+        console.log(res.data)
+      }
+      getFriends()
+
     }
   }, [savedUser])
 
@@ -44,6 +50,7 @@ export default function MainDisplay({ savedUser }) {
         try {
           const res = await axios.get(`posts/timeline/${userId}`)
           setTimelinePosts(res.data)
+          console.log(res.data)
           
         } catch (error) {
           console.log(error)

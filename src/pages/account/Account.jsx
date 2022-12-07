@@ -60,7 +60,7 @@ export default function Account() {
                     <div className="accountProfileDetail">
                         <div className="imgContainer">
                             {/* <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZmFjZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60" alt="" className="accountProfileImg" /> */}
-                            <img src={profileData.profilePicture} alt="" className="accountProfileImg" />
+                            <img src={profileData.profilePicture ? profileData.profilePicture : noprofileImg} alt="" className="accountProfileImg" />
                             <CameraAlt className='i-camera' />
                         </div>
                         <div className="accountNameContainer">
